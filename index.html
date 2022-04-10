@@ -34,7 +34,7 @@
     [ ] Send a message to somewhere (e.g. Airtable) to capture the data: fields, IP address, result
     [x] User-friendly field validation messages:
         Loan year: For loans before 2009 please contact Deed at support@trydeed.com to determine if you have a conforming loan.
-    [ ] Embed it into squarespace webstie
+    [x] Embed it into squarespace webstie
     [ ] Add the link on the I don't know > I still don't know page in the Typeform
     [ ] filter zip codes from the start
   -->
@@ -142,7 +142,7 @@
       <div class="columns is-1">
         <div class="column is-one-third">
           <div class="control has-icons-left">
-            <button class="button is-link is-fullwidth" type="submit" data-target="results-modal">
+            <button class="button is-link is-fullwidth js-modal-trigger" type="submit" data-target="results-modal">
               Check if comforming
             </button>
             <span class="icon is-small is-left">
@@ -153,10 +153,17 @@
       </div>
     </form>
 
-    <div class="columns is-1">
-      <div class="column">
-        <div class="notification is-link" id="result" style="display: none;"></div>
+    <div id="results-modal" class="modal">
+      <div class="modal-background"></div>
+    
+      <div class="modal-content">
+        <div class="box">
+          <p>Modal JS example</p>
+          <div class="notification is-link" id="result"></div>
+        </div>
       </div>
+    
+      <button class="modal-close is-large" aria-label="close"></button>
     </div>
   </div>
 

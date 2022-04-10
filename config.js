@@ -3,7 +3,7 @@ requirejs.config({
   paths: {
     "jquery": "lib/jquery.min",
     "airtable": "lib/airtable.browser",
-    "src/main": "index.min"
+    "src/main": "index"
   }
 });
 
