@@ -41,7 +41,7 @@
 
   <div class="container is-fluid">
     <div class="columns">
-      <div class="column is-5 is-full">
+      <div class="column is-8 is-full">
         <h2 class="title">Do you have a comforming loan?</h2>
       </div>
     </div>
@@ -142,7 +142,8 @@
       <div class="columns is-1">
         <div class="column is-one-third">
           <div class="control has-icons-left">
-            <button class="button is-link is-fullwidth js-modal-trigger" type="submit" data-target="results-modal">
+            <button class="button is-link is-fullwidth js-modal-trigger"
+                    id="btn-check-conforming" type="submit" data-target="results-modal">
               Check if comforming
             </button>
             <span class="icon is-small is-left">
@@ -155,14 +156,13 @@
 
     <div id="results-modal" class="modal">
       <div class="modal-background"></div>
-    
+
       <div class="modal-content">
         <div class="box">
-          <p>Modal JS example</p>
-          <div class="notification is-link" id="result"></div>
+          <p>Your loan is <strong><span id="result"></span></strong></p>
         </div>
       </div>
-    
+
       <button class="modal-close is-large" aria-label="close"></button>
     </div>
   </div>
