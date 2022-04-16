@@ -7,51 +7,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Comforming Loan Checker</title>
-  <meta name="description" content="Comforming loan checker">
+  <meta name="description" content="Conforming Checker">
   <meta name="author" content="Deed Technologies">
 
-  <!--
-  <meta property="og:title" content="A Basic HTML5 Template">
+
+  <meta property="og:title" content="Conforming Checker">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
-  <meta property="og:description" content="A simple HTML5 Template for new projects.">
-  <meta property="og:image" content="image.png">
- -->
-  <!--
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
- -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <meta property="og:url"
+        content="https://withdeed.github.io/conforming-checker">
+  <meta property="og:description"
+        content="A simple HTML5 Template for new projects.">
+  <!-- <meta property="og:image" content="image.png"> -->
+
+  <!-- <link rel="icon" href="/favicon.ico"> -->
+  <!-- <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+  <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+  <style>
+    .loader-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: #fff;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 6px;
+    }
+
+    .loader-wrapper .loader {
+      height: 80px;
+      width: 80px;
+    }
+
+    .loader-wrapper.is-active {
+      opacity: 1;
+      z-index: 1;
+    }
+  </style>
 </head>
 
 <body>
-  <!--
-  To Do:
-    [x] Add all data
-    [ ] User-friendly result message
-    [ ] Send a message to somewhere (e.g. Airtable) to capture the data: fields, IP address, result
-    [x] User-friendly field validation messages:
-        Loan year: For loans before 2009 please contact Deed at support@trydeed.com to determine if you have a conforming loan.
-    [x] Embed it into squarespace webstie
-    [ ] Add the link on the I don't know > I still don't know page in the Typeform
-    [ ] filter zip codes from the start
-  -->
+  <div class="loader-wrapper is-active">
+    <div class="loader is-loading"></div>
+  </div>
 
-  <div class="container is-fluid">
-    <div class="columns">
+  <div class="container is-fluid" style="display: none;">
+    <div class="columns is-fullhd">
       <div class="column is-8 is-full">
-        <h2 class="title">Do you have a comforming loan?</h2>
+        <h2 class="title">
+          <span class="messages" data-msg="page.header"></span>
+        </h2>
       </div>
     </div>
 
     <form id="conformingLimits">
       <div class="columns is-1">
         <div class="column is-one-third field">
-          <label class="label" for="zipCodeInput">ZIP code</label>
+          <label class="label" for="zipCodeInput">
+            <span class="messages" data-msg="form.zipCode"></span>
+          </label>
           <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="10120" id="zipCodeInput" list="zipCodesDatalist" required>
+            <input class="input" type="text" placeholder="10120"
+                   id="zipCodeInput" list="zipCodesDatalist" required>
             <datalist id="zipCodesDatalist"></datalist>
             <span class="icon is-small is-left">
               <i class="fas fa-map"></i>
@@ -59,11 +87,14 @@
           </div>
         </div>
 
-        <div class="column is-two-thirds field" id="countyDiv" style="display: none;">
-          <label class="label" for="countyInput">County</label>
+        <div class="column is-two-thirds field" id="countyDiv"
+             style="display: none;">
+          <label class="label" for="countyInput">
+            <span class="messages" data-msg="form.county"></span>
+          </label>
           <div class="control has-icons-left">
-            <input class="input" type="text" placeholder="Oglala Lakota County" id="countyInput"
-              list="countiesDatalist">
+            <input class="input" type="text" placeholder="Oglala Lakota County"
+                   id="countyInput" list="countiesDatalist">
             <datalist id="countiesDatalist"></datalist>
             <span class="icon is-small is-left">
               <i class="fas fa-map-marked"></i>
@@ -74,17 +105,23 @@
 
       <div class="columns is-1">
         <div class="column is-one-third field">
-          <label class="label" for="loanYearInput">Loan year</label>
+          <label class="label" for="loanYearInput">
+            <span class="messages" data-msg="form.loanYear"></span>
+          </label>
           <div class="control has-icons-left">
-            <input class="input" type="number" min="2009" max="2022" id="loanYearInput" placeholder="2015" required>
+            <input class="input" type="number" min="2009" max="2022"
+                   id="loanYearInput" placeholder="2015" required>
             <span class="icon is-small is-left">
               <i class="fas fa-calendar"></i>
             </span>
           </div>
         </div>
 
-        <div class="column is-two-thirds field" id="loanMonthDiv" style="display: none;">
-          <label class="label" for="loanMonthInput">Loan month</label>
+        <div class="column is-two-thirds field" id="loanMonthDiv"
+             style="display: none;">
+          <label class="label" for="loanMonthInput">
+            <span class="messages" data-msg="form.loanMonth"></span>
+          </label>
           <div class="control has-icons-left">
             <div class="select is-fullwidth">
               <select id="loanMonthInput" value="1">
@@ -111,9 +148,12 @@
 
       <div class="columns is-1">
         <div class="column is-one-third field">
-          <label class="label" for="priceInput">Loan amount</label>
+          <label class="label" for="priceInput">
+            <span class="messages" data-msg="form.loanAmount"></span>
+          </label>
           <div class="control has-icons-left">
-            <input class="input" type="text" maxlength="10" id="priceInput" placeholder="500,000" required>
+            <input class="input" type="text" maxlength="10" id="priceInput"
+                   placeholder="500,000" required>
             <span class="icon is-small is-left">
               <i class="fas fa-dollar-sign"></i>
             </span>
@@ -121,15 +161,22 @@
         </div>
 
         <div class="column is-two-thirds field">
-          <label class="label" for="unitsInput">Number of units</label>
+          <label class="label" for="unitsInput">
+            <span class="messages" data-msg="form.unitCount"></span>
+          </label>
           <div class="control has-icons-left">
             <div class="select is-fullwidth">
               <select id="unitsInput" value="1">
-                <option value="1">Single-family home/condo (1 unit)</option>
-                <option value="2">Duplex (2 units)</option>
-                <option value="3">Triplex (3 units)</option>
-                <option value="4">Quadplex (4 units)</option>
-                <option value="5">Multiplex (5 units or more)</option>
+                <option value="1" class="messages"
+                        data-msg="form.unitCountOptions.single"></option>
+                <option value="2" class="messages"
+                        data-msg="form.unitCountOptions.duplex"></option>
+                <option value="3" class="messages"
+                        data-msg="form.unitCountOptions.triplex"></option>
+                <option value="4" class="messages"
+                        data-msg="form.unitCountOptions.quadplex"></option>
+                <option value="5" class="messages"
+                        data-msg="form.unitCountOptions.multiplex"></option>
               </select>
             </div>
             <span class="icon is-small is-left">
@@ -142,9 +189,9 @@
       <div class="columns is-1">
         <div class="column is-one-third">
           <div class="control has-icons-left">
-            <button class="button is-link is-fullwidth js-modal-trigger"
-                    id="btn-check-conforming" type="submit" data-target="results-modal">
-              Check if comforming
+            <button class="button is-link is-fullwidth js-modal-trigger messages"
+                    id="btn-check-conforming" type="submit"
+                    data-target="results-modal" data-msg="form.btnCheck">
             </button>
             <span class="icon is-small is-left">
               <i class="fas fa-play-circle"></i>
@@ -159,7 +206,10 @@
 
       <div class="modal-content">
         <div class="box">
-          <p>Your loan is <strong><span id="result"></span></strong></p>
+          <p>
+            <span class="messages" data-msg="resultsModal.resultPrefix"></span>
+            <strong><span id="result"></span></strong>
+          </p>
         </div>
       </div>
 
