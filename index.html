@@ -73,7 +73,7 @@
 
     <form id="conformingLimits">
       <div class="columns is-1">
-        <div class="column is-one-third field">
+        <div class="column is-full field">
           <label class="label" for="zipCodeInput">
             <span class="messages" data-msg="form.zipCode"></span>
           </label>
@@ -86,8 +86,10 @@
             </span>
           </div>
         </div>
+      </div>
 
-        <div class="column is-two-thirds field" id="countyDiv"
+      <div class="columns is-1">
+        <div class="column is-full field" id="countyDiv"
              style="display: none;">
           <label class="label" for="countyInput">
             <span class="messages" data-msg="form.county"></span>
@@ -104,7 +106,7 @@
       </div>
 
       <div class="columns is-1">
-        <div class="column is-one-third field">
+        <div class="column is-full field">
           <label class="label" for="loanYearInput">
             <span class="messages" data-msg="form.loanYear"></span>
           </label>
@@ -116,8 +118,10 @@
             </span>
           </div>
         </div>
+      </div>
 
-        <div class="column is-two-thirds field" id="loanMonthDiv"
+      <div class="columns is-1">
+        <div class="column is-full field" id="loanMonthDiv"
              style="display: none;">
           <label class="label" for="loanMonthInput">
             <span class="messages" data-msg="form.loanMonth"></span>
@@ -147,7 +151,7 @@
       </div>
 
       <div class="columns is-1">
-        <div class="column is-one-third field">
+        <div class="column is-full field">
           <label class="label" for="priceInput">
             <span class="messages" data-msg="form.loanAmount"></span>
           </label>
@@ -159,8 +163,10 @@
             </span>
           </div>
         </div>
+      </div>
 
-        <div class="column is-two-thirds field">
+      <div class="columns is-1">
+        <div class="column is-full field">
           <label class="label" for="unitsInput">
             <span class="messages" data-msg="form.unitCount"></span>
           </label>
@@ -187,7 +193,7 @@
       </div>
 
       <div class="columns is-1">
-        <div class="column is-one-third">
+        <div class="column is-full">
           <div class="control has-icons-left">
             <button class="button is-link is-fullwidth js-modal-trigger messages"
                     id="btn-check-conforming" type="submit"
@@ -200,21 +206,21 @@
         </div>
       </div>
     </form>
+  </div>
 
-    <div id="results-modal" class="modal">
-      <div class="modal-background"></div>
+  <div id="results-modal" class="modal">
+    <div class="modal-background"></div>
 
-      <div class="modal-content">
-        <div class="box">
-          <p>
-            <span class="messages" data-msg="resultsModal.resultPrefix"></span>
-            <strong><span id="result"></span></strong>
-          </p>
-        </div>
+    <div class="modal-content">
+      <div class="box">
+        <p>
+          <span class="messages" data-msg="resultsModal.resultPrefix"></span>
+          <strong><span id="result"></span></strong>
+        </p>
       </div>
-
-      <button class="modal-close is-large" aria-label="close"></button>
     </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
   </div>
 
   <script data-main="config" src="lib/require.js"></script>
